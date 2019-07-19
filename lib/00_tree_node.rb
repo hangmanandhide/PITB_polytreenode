@@ -30,8 +30,12 @@ class PolyTreeNode
 
   def remove_child(child_node)
     # debugger
-    raise "Error: Node is not a child" if !child_node.class?(PolyTreeNode)
-    child_node.parent = nil
+    if child_node.parent.children.include?(child_node)
+      child_node.parent = nil
+    else 
+     raise "Error: Node is not a child"
+    end
+
   end
 
 
