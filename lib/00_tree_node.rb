@@ -29,7 +29,7 @@ class PolyTreeNode
   end
 
   def remove_child(child_node)
-    # debugger
+
     if child_node.parent.children.include?(child_node)
       child_node.parent = nil
     else 
@@ -38,6 +38,19 @@ class PolyTreeNode
 
   end
 
+  def dfs(target_value)
+    if self.value == target_value
+      return self
+    else
+      return nil
+    end
+    debugger
+    left = self.children[0]
+    right = self.children[1..-1]
+
+    left if left.dfs(target_value)
+    right if right.dfs(target_value)
+  end
 
 
   def inspect
