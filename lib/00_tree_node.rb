@@ -41,15 +41,23 @@ class PolyTreeNode
   def dfs(target_value)
     if self.value == target_value
       return self
-    else
-      return nil
     end
-    debugger
-    left = self.children[0]
-    right = self.children[1..-1]
+     
+    self.children.each do |child|
+      search_result = child.dfs(target_value)
+      return search_result unless search_result.nil?
+    end
 
-    left if left.dfs(target_value)
-    right if right.dfs(target_value)
+    nil
+    # # left = self.children[0]
+    # # right = self.children[1..-1]
+
+    # # left if left.dfs(target_value)
+    # # right if right.dfs(target_value)
+  end
+
+  def bfs(target_value)
+    
   end
 
 
