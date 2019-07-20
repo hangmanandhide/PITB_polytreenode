@@ -49,15 +49,24 @@ class PolyTreeNode
     end
 
     nil
-    # # left = self.children[0]
-    # # right = self.children[1..-1]
-
-    # # left if left.dfs(target_value)
-    # # right if right.dfs(target_value)
   end
 
   def bfs(target_value)
+
+    queue = [self]
+    until queue.empty?
+      now_serving = queue.shift
+      
+      if now_serving.value == target_value
+        return now_serving
+      else
+        now_serving.children.each do |child|
+          queue.push(child)
+        end
+      end
+    end
     
+    nil
   end
 
 
